@@ -5,6 +5,9 @@ export const TaskCreator = ({ createNewTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (newTaskName === '') {
+      return
+    }
     createNewTask(newTaskName)
     setNewTaskName('')
   }
@@ -16,7 +19,7 @@ export const TaskCreator = ({ createNewTask }) => {
 
   return (
     <form onSubmit={handleSubmit} className='my-2 row'>
-      <div className='col-9 '>
+      <div className='col-9'>
         <input
           type='text'
           placeholder='Enter a new task'
