@@ -1,11 +1,21 @@
 import { TaskRow } from './TaskRow'
 
-export const TaskTable = ({ tasks, toggleTask, showCompleted = false }) => {
+export const TaskTable = ({
+  tasks,
+  toggleTask,
+  deleteTask,
+  showCompleted = false
+}) => {
   const taskTableRows = (doneValue) => {
     return tasks
       .filter((task) => task.done === doneValue)
       .map((task) => (
-        <TaskRow task={task} key={task.name} toggleTask={toggleTask} />
+        <TaskRow
+          task={task}
+          key={task.name}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+        />
       ))
   }
 

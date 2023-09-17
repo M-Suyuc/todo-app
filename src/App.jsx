@@ -8,6 +8,7 @@ import './App.css'
 export default function App() {
   const [tasksItems, setTasksItems] = useState([])
   const [showCompleted, setShowCompleted] = useState(false)
+  console.log(tasksItems)
 
   function createNewTask(taskName) {
     if (!tasksItems.find((task) => task.name === taskName)) {
@@ -35,15 +36,23 @@ export default function App() {
     setShowCompleted(false)
   }
 
+  const deleteTask = (name) => {
+    setTasksItems(tasksItems.filter((task) => task.name !== name))
+  }
+
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasksItems))
   }, [tasksItems])
 
   return (
-    <main className='bg-dark vh-100 text-white'>
+    <main className='bg-dark min-vh-100 text-white'>
       <div className='container p-4 col-md-4 offset-md-4'>
         <TaskCreator createNewTask={createNewTask} />
-        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        <TaskTable
+          tasks={tasksItems}
+          toggleTask={toggleTask}
+          deleteTask={deleteTask}
+        />
         <VisibilityControl
           isChecked={showCompleted}
           setShowCompleted={(checked) => setShowCompleted(checked)}
@@ -55,9 +64,14 @@ export default function App() {
             tasks={tasksItems}
             toggleTask={toggleTask}
             showCompleted={showCompleted}
+            deleteTask={deleteTask}
           />
         )}
       </div>
+      <footer>
+        <a href='https//:www.github'>github</a>
+        <a href=''>portafolio</a>
+      </footer>
     </main>
   )
 }
