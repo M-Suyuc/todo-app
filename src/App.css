@@ -1,15 +1,25 @@
-/* Llamado en App.js */
-.App {
-  text-align: center;
+main{
+  position: relative;
+  padding-bottom: 3rem;
 }
-
-.App-content {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
+footer{
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  right: 50%;
   display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
   justify-content: center;
-  min-height: 100vh;
+  gap: 1rem;
+}
+footer a{
+  background-color: #282c34;
+  text-decoration: none;
+  color: gray;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+footer a:hover{
+  /* opacity: 3; */
+  outline: 1px lightgray solid;
+  background-color: #282c345d;
 }
